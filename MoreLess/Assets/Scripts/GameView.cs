@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameView : MonoBehaviour
 {
     [SerializeField] private Button _backToMenuButton;
-    [SerializeField] private Button _storeButton;
+    [SerializeField] private Button _restartButton;
     [SerializeField] private Text _score;
     [SerializeField] private Button _moreButton;
     [SerializeField] private Button _lessButton;
@@ -25,7 +25,7 @@ public class GameView : MonoBehaviour
     [SerializeField] private Sprite[] _numberSprites;
 
     public void Init(
-        UnityAction backToMenu, UnityAction store,
+        UnityAction backToMenu, UnityAction restart,
         UnityAction more, UnityAction less,
         UnityAction button1, UnityAction button2,
         UnityAction button3, UnityAction button4,
@@ -34,7 +34,7 @@ public class GameView : MonoBehaviour
         UnityAction button9)
     {
         _backToMenuButton.onClick.AddListener(backToMenu);
-        _storeButton.onClick.AddListener(store);
+        _restartButton.onClick.AddListener(restart);
         _moreButton.onClick.AddListener(more);
         _lessButton.onClick.AddListener(less);
 
@@ -71,7 +71,7 @@ public class GameView : MonoBehaviour
     protected void OnDestroy()
     {
         _backToMenuButton.onClick.RemoveAllListeners();
-        _storeButton.onClick.RemoveAllListeners();
+        _restartButton.onClick.RemoveAllListeners();
         _moreButton.onClick.RemoveAllListeners();
         _lessButton.onClick.RemoveAllListeners();
 

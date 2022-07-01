@@ -6,6 +6,7 @@ public class MainController : BaseController
     private readonly Transform _uiRoot;
     private MenuController _menuController;
     private GameController _gameController;
+    private InfoController _infoController;
 
     public MainController(GameState gameState, Transform uiRoot)
     {
@@ -23,14 +24,24 @@ public class MainController : BaseController
             case EnumGameState.Menu:
                 _menuController = new MenuController(_gameState, _uiRoot);
                 _gameController?.Dispose();
+                _infoController?.Dispose();
+                break;
+            case EnumGameState.Info:
+                _infoController = new InfoController(_gameState, _uiRoot);
+                _menuController?.Dispose();
                 break;
             case EnumGameState.Game:
                 _gameController = new GameController(_gameState, _uiRoot);
                 _menuController?.Dispose();
                 break;
+            case EnumGameState.Restart:
+                _gameController?.Dispose();
+                _gameState.CurrentGameState.Value = EnumGameState.Game;
+                break;
             default:
                 _menuController?.Dispose();
                 _gameController?.Dispose();
+                _infoController?.Dispose();
                 break;
         }
     }
@@ -39,6 +50,7 @@ public class MainController : BaseController
     {
         _menuController?.Dispose();
         _gameController?.Dispose();
+        _infoController?.Dispose();
         _gameState.CurrentGameState.UnSubscribe(GameStateChanged);
         base.OnDispose();
     }

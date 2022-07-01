@@ -10,12 +10,37 @@ public class MenuController : BaseController
     {
         _gameState = gameState;
         _menuView = LoadView(uiRoot);
-        _menuView.Init(StartGame);
+        _menuView.Init(StartGame, ShowInfo, ShowLeaderBord, OpenStore, OpenTwitter, OpenFacebook);
     }
 
     private void StartGame()
     {
         _gameState.CurrentGameState.Value = EnumGameState.Game;
+    }
+
+    private void ShowInfo()
+    {
+        _gameState.CurrentGameState.Value = EnumGameState.Info;
+    }
+
+    private void ShowLeaderBord()
+    {
+
+    }
+
+    private void OpenStore()
+    {
+
+    }
+
+    private void OpenTwitter()
+    {
+        Application.OpenURL("https://twitter.com/");
+    }
+
+    private void OpenFacebook()
+    {
+        Application.OpenURL("https://www.facebook.com");
     }
 
     private MenuView LoadView(Transform uiRoot)

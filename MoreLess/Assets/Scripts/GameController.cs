@@ -12,7 +12,7 @@ public class GameController : BaseController
         _gameState = state;
         _gameModel = new GameModel();
         _gameView = LoadView(uiRoot);
-        _gameView.Init(BackToMenu, OpenStore, ChooseMore, ChooseLess,
+        _gameView.Init(BackToMenu, Restart, ChooseMore, ChooseLess,
             ClickToButton1, ClickToButton2, ClickToButton3,
             ClickToButton4, ClickToButton5, ClickToButton6,
             ClickToButton7, ClickToButton8, ClickToButton9);
@@ -24,9 +24,9 @@ public class GameController : BaseController
         _gameState.CurrentGameState.Value = EnumGameState.Menu;
     }
 
-    private void OpenStore()
+    private void Restart()
     {
-        Debug.Log("Click to store");
+        _gameState.CurrentGameState.Value = EnumGameState.Restart;
     }
 
     private void ChooseMore()

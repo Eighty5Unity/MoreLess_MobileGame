@@ -655,7 +655,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7649231f1fd394b7b9eef81888190697, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ed2afd3f5fc8848fdbda533519808dfb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -957,7 +957,7 @@ GameObject:
   - component: {fileID: 7729566308447622714}
   - component: {fileID: 7854577939068232120}
   m_Layer: 5
-  m_Name: StoreButton
+  m_Name: RestartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1009,7 +1009,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f3a52a16d816d477daff557c2cde5332, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7649231f1fd394b7b9eef81888190697, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1786,7 +1786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _backToMenuButton: {fileID: 949632408939481595}
-  _storeButton: {fileID: 7854577939068232120}
+  _restartButton: {fileID: 7854577939068232120}
   _score: {fileID: 7042688191862398777}
   _moreButton: {fileID: 8812626737944074345}
   _lessButton: {fileID: 4132041570281492371}

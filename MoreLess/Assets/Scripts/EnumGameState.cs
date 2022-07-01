@@ -2,5 +2,7 @@
 {
     None,
     Menu,
+    Info,
     Game,
+    Restart,
 }
