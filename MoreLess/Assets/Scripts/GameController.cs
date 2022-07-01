@@ -1,47 +1,22 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameController : BaseController
 {
     private readonly GameState _gameState;
     private readonly ResourcePath _gameViewResource = new ResourcePath() { PathResource = "Prefabs/Game" };
     private readonly GameView _gameView;
-    private bool _chooseMore = true;
-    private bool _chooseLess = true;
-    private List<int> _numbers = new List<int>(9);
-    private int _score = 0;
-    private int _lastNumber;
-    private int _winCoef = 1;
-    private int _loseCoef = -1;
-
-    private bool _clickButton1;
-    private bool _clickButton2;
-    private bool _clickButton3;
-    private bool _clickButton4;
-    private bool _clickButton5;
-    private bool _clickButton6;
-    private bool _clickButton7;
-    private bool _clickButton8;
-    private bool _clickButton9;
+    private readonly GameModel _gameModel;
 
     public GameController(GameState state, Transform uiRoot)
     {
         _gameState = state;
+        _gameModel = new GameModel();
         _gameView = LoadView(uiRoot);
         _gameView.Init(BackToMenu, OpenStore, ChooseMore, ChooseLess,
             ClickToButton1, ClickToButton2, ClickToButton3,
             ClickToButton4, ClickToButton5, ClickToButton6,
             ClickToButton7, ClickToButton8, ClickToButton9);
-        _gameView.SetScore(_score);
-        _numbers.Add(1);
-        _numbers.Add(2);
-        _numbers.Add(3);
-        _numbers.Add(4);
-        _numbers.Add(5);
-        _numbers.Add(6);
-        _numbers.Add(7);
-        _numbers.Add(8);
-        _numbers.Add(9);
+        _gameView.SetScore(_gameModel.Score);
     }
 
     private void BackToMenu()
@@ -56,40 +31,40 @@ public class GameController : BaseController
 
     private void ChooseMore()
     {
-        if(_chooseLess && _chooseMore)
+        if(_gameModel.ChooseLess && _gameModel.ChooseMore)
         {
             return;
         }
-        _chooseMore = true;
-        _chooseLess = false;
+        _gameModel.ChooseMore = true;
+        _gameModel.ChooseLess = false;
     }
 
     private void ChooseLess()
     {
-        if (_chooseLess && _chooseMore)
+        if (_gameModel.ChooseLess && _gameModel.ChooseMore)
         {
             return;
         }
-        _chooseLess = true;
-        _chooseMore = false;
+        _gameModel.ChooseLess = true;
+        _gameModel.ChooseMore = false;
     }
 
     #region Buttons
     private void ClickToButton1()
     {
-        if(_clickButton1)
+        if(_gameModel.ClickButton1)
         {
             return;
         }
 
-        if (!_chooseMore && !_chooseLess)
+        if (!_gameModel.ChooseMore && !_gameModel.ChooseLess)
         {
             return;
         }
 
-        _clickButton1 = true;
+        _gameModel.ClickButton1 = true;
 
-        if (_chooseMore && _chooseLess)
+        if (_gameModel.ChooseMore && _gameModel.ChooseLess)
         {
             FirstClick(1);
             return;
@@ -100,19 +75,19 @@ public class GameController : BaseController
 
     private void ClickToButton2()
     {
-        if (_clickButton2)
+        if (_gameModel.ClickButton2)
         {
             return;
         }
 
-        if (!_chooseMore && !_chooseLess)
+        if (!_gameModel.ChooseMore && !_gameModel.ChooseLess)
         {
             return;
         }
 
-        _clickButton2 = true;
+        _gameModel.ClickButton2 = true;
 
-        if (_chooseMore && _chooseLess)
+        if (_gameModel.ChooseMore && _gameModel.ChooseLess)
         {
             FirstClick(2);
             return;
@@ -123,19 +98,19 @@ public class GameController : BaseController
 
     private void ClickToButton3()
     {
-        if (_clickButton3)
+        if (_gameModel.ClickButton3)
         {
             return;
         }
 
-        if (!_chooseMore && !_chooseLess)
+        if (!_gameModel.ChooseMore && !_gameModel.ChooseLess)
         {
             return;
         }
 
-        _clickButton3 = true;
+        _gameModel.ClickButton3 = true;
 
-        if (_chooseMore && _chooseLess)
+        if (_gameModel.ChooseMore && _gameModel.ChooseLess)
         {
             FirstClick(3);
             return;
@@ -146,19 +121,19 @@ public class GameController : BaseController
 
     private void ClickToButton4()
     {
-        if (_clickButton4)
+        if (_gameModel.ClickButton4)
         {
             return;
         }
 
-        if (!_chooseMore && !_chooseLess)
+        if (!_gameModel.ChooseMore && !_gameModel.ChooseLess)
         {
             return;
         }
 
-        _clickButton4 = true;
+        _gameModel.ClickButton4 = true;
 
-        if (_chooseMore && _chooseLess)
+        if (_gameModel.ChooseMore && _gameModel.ChooseLess)
         {
             FirstClick(4);
             return;
@@ -169,19 +144,19 @@ public class GameController : BaseController
 
     private void ClickToButton5()
     {
-        if (_clickButton5)
+        if (_gameModel.ClickButton5)
         {
             return;
         }
 
-        if (!_chooseMore && !_chooseLess)
+        if (!_gameModel.ChooseMore && !_gameModel.ChooseLess)
         {
             return;
         }
 
-        _clickButton5 = true;
+        _gameModel.ClickButton5 = true;
 
-        if (_chooseMore && _chooseLess)
+        if (_gameModel.ChooseMore && _gameModel.ChooseLess)
         {
             FirstClick(5);
             return;
@@ -192,19 +167,19 @@ public class GameController : BaseController
 
     private void ClickToButton6()
     {
-        if (_clickButton6)
+        if (_gameModel.ClickButton6)
         {
             return;
         }
 
-        if (!_chooseMore && !_chooseLess)
+        if (!_gameModel.ChooseMore && !_gameModel.ChooseLess)
         {
             return;
         }
 
-        _clickButton6 = true;
+        _gameModel.ClickButton6 = true;
 
-        if (_chooseMore && _chooseLess)
+        if (_gameModel.ChooseMore && _gameModel.ChooseLess)
         {
             FirstClick(6);
             return;
@@ -215,19 +190,19 @@ public class GameController : BaseController
 
     private void ClickToButton7()
     {
-        if (_clickButton7)
+        if (_gameModel.ClickButton7)
         {
             return;
         }
 
-        if (!_chooseMore && !_chooseLess)
+        if (!_gameModel.ChooseMore && !_gameModel.ChooseLess)
         {
             return;
         }
 
-        _clickButton7 = true;
+        _gameModel.ClickButton7 = true;
 
-        if (_chooseMore && _chooseLess)
+        if (_gameModel.ChooseMore && _gameModel.ChooseLess)
         {
             FirstClick(7);
             return;
@@ -238,19 +213,19 @@ public class GameController : BaseController
 
     private void ClickToButton8()
     {
-        if (_clickButton8)
+        if (_gameModel.ClickButton8)
         {
             return;
         }
 
-        if (!_chooseMore && !_chooseLess)
+        if (!_gameModel.ChooseMore && !_gameModel.ChooseLess)
         {
             return;
         }
 
-        _clickButton8 = true;
+        _gameModel.ClickButton8 = true;
 
-        if (_chooseMore && _chooseLess)
+        if (_gameModel.ChooseMore && _gameModel.ChooseLess)
         {
             FirstClick(8);
             return;
@@ -261,19 +236,19 @@ public class GameController : BaseController
 
     private void ClickToButton9()
     {
-        if (_clickButton9)
+        if (_gameModel.ClickButton9)
         {
             return;
         }
 
-        if (!_chooseMore && !_chooseLess)
+        if (!_gameModel.ChooseMore && !_gameModel.ChooseLess)
         {
             return;
         }
 
-        _clickButton9 = true;
+        _gameModel.ClickButton9 = true;
 
-        if (_chooseMore && _chooseLess)
+        if (_gameModel.ChooseMore && _gameModel.ChooseLess)
         {
             FirstClick(9);
             return;
@@ -293,57 +268,53 @@ public class GameController : BaseController
     private void FirstClick(int buttonNumber)
     {
         var number = GenerateRandomNumber();
-        _lastNumber = number;
-        _chooseLess = false;
-        _chooseMore = false;
+        _gameModel.LastNumber = number;
+        _gameModel.ChooseLess = false;
+        _gameModel.ChooseMore = false;
         _gameView.SetSprite(buttonNumber, number);
     }
 
     private void LessOrMore(int buttonNumber)
     {
         var number = GenerateRandomNumber();
-        if (_chooseMore)
+        if (_gameModel.ChooseMore)
         {
-            if(_lastNumber < number)
+            if(_gameModel.LastNumber < number)
             {
-                _score += _winCoef;
-                _winCoef++;
-                _loseCoef = -1;
+                _gameModel.Score += _gameModel.WinCoef++;
+                _gameModel.LoseCoef = -1;
             }
             else
             {
-                _score += _loseCoef;
-                _loseCoef--;
-                _winCoef = 1;
+                _gameModel.Score += _gameModel.LoseCoef--;
+                _gameModel.WinCoef = 1;
             }
-            _chooseMore = false;
+            _gameModel.ChooseMore = false;
         }
-        else if (_chooseLess)
+        else if (_gameModel.ChooseLess)
         {
-            if(_lastNumber > number)
+            if(_gameModel.LastNumber > number)
             {
-                _score += _winCoef;
-                _winCoef++;
-                _loseCoef = -1;
+                _gameModel.Score += _gameModel.WinCoef++;
+                _gameModel.LoseCoef = -1;
             }
             else
             {
-                _score += _loseCoef;
-                _loseCoef--;
-                _winCoef = 1;
+                _gameModel.Score += _gameModel.LoseCoef--;
+                _gameModel.WinCoef = 1;
             }
-            _chooseLess = false;
+            _gameModel.ChooseLess = false;
         }
-        _lastNumber = number;
+        _gameModel.LastNumber = number;
         _gameView.SetSprite(buttonNumber, number);
-        _gameView.SetScore(_score);
+        _gameView.SetScore(_gameModel.Score);
     }
 
     private int GenerateRandomNumber()
     {
-        var index = Random.Range(0, _numbers.Count);
-        var result = _numbers[index];
-        _numbers.Remove(_numbers[index]);
+        var index = Random.Range(0, _gameModel.Numbers.Count);
+        var result = _gameModel.Numbers[index];
+        _gameModel.Numbers.Remove(_gameModel.Numbers[index]);
         return result;
     }
 }
